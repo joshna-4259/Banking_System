@@ -1,0 +1,44 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ABC Bank</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">ABC Bank</div>
+    </header>
+
+    <section class="auth-section">
+        <div class="auth-container">
+            <h2>Login to Your Account</h2>
+            <form action="#" method="POST">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+
+                <!-- Google reCAPTCHA -->
+                <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div> <!-- Replace YOUR_SITE_KEY -->
+
+                <button type="submit" class="cta-btn">Login</button>
+                <p>Don’t have an account? <a href="signup.html">Sign Up</a></p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ABC Bank. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

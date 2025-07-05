@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            color: #333;
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .hero {
+            text-align: center;
+            padding: 60px 5%;
+            background-color: white;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #007bff;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 50px 5%;
+            text-align: center;
+            background-color: #fff;
+        }
+        .service-box {
+            background: #f4f7fb;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial {
+            text-align: center;
+            padding: 50px 5%;
+            background: #f4f7fb;
+        }
+        .footer {
+            background: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px 5%;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+        <h2>BankName</h2>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Services</a>
+            <a href="#">About</a>
+            <a href="#">Security</a>
+            <a href="#">Contact</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Secure, Reliable, and Fast Banking</h1>
+        <p>Experience seamless banking with advanced security and easy transactions.</p>
+        <button class="btn">Get Started</button>
+    </section>
+
+    <section class="services">
+        <div class="service-box">
+            <h3>💳 Personal Banking</h3>
+            <p>Savings, Checking, and Loans.</p>
+        </div>
+        <div class="service-box">
+            <h3>🏢 Business Solutions</h3>
+            <p>Corporate banking and business loans.</p>
+        </div>
+        <div class="service-box">
+            <h3>📈 Wealth Management</h3>
+            <p>Investments, Retirement Planning.</p>
+        </div>
+        <div class="service-box">
+            <h3>🔒 Secure Transactions</h3>
+            <p>Fraud Protection and Online Banking.</p>
+        </div>
+    </section>
+
+    <section class="testimonial">
+        <h2>What Our Customers Say</h2>
+        <p>⭐⭐⭐⭐⭐ "Loved the service! Easy to use & secure!"</p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 BankName. All Rights Reserved.</p>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms</a> | <a href="#">Support</a>
+    </footer>
+
+</body>
+</html>

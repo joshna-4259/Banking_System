@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Banking Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            color: #333;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 80%;
+            max-width: 1100px;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+        .profile-info, .bank-info, .payment-history, .other-features {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .profile-info h2, .bank-info h2, .payment-history h2, .other-features h2 {
+            color: #007bff;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+        .profile-info p, .bank-info p, .payment-history ul, .other-features ul {
+            font-size: 16px;
+            color: #555;
+        }
+        .bank-info p, .payment-history ul {
+            padding-left: 20px;
+        }
+        .payment-history li {
+            margin: 10px 0;
+            padding: 8px;
+            background-color: #f7f9fc;
+            border-left: 4px solid #007bff;
+        }
+        .payment-history li:hover {
+            background-color: #f0f4f9;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .section {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            padding-bottom: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 48%;
+        }
+        .card h3 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 16px;
+            color: #555;
+        }
+        .card .btn {
+            margin-top: 15px;
+            width: 100%;
+            text-align: center;
+        }
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>CUSTOMER PROFILE</h1>
+
+    <!-- Profile Information -->
+    <div class="profile-info">
+        <h2>Profile Information</h2>
+        <p><strong>First Name:</strong> VANAM</p>
+        <p><strong>Last Name:</strong> JOSHNA</p>
+        <p><strong>Date Of Birth:</strong> 05-10-2004</p>
+        <p><strong>Gender:</strong> Female</p>
+        <p><strong>Email:</strong> joshna.@example.com</p>
+        <p><strong>Phone:</strong> +0112 358 1321</p>
+        <p><strong>Address:</strong> UK,England,London,221B Bakers Street</p>
+        <p><strong>Nationality:</strong> Indian</p>
+    </div>
+
+    <!-- Bank Information -->
+    <div class="bank-info">
+        <h2>Bank Information</h2>
+        <p><strong>Account Number:</strong> 1234567890</p>
+        <p><strong>Account Balance:</strong> ₹69,00,000</p>
+        <p><strong>Account Type:</strong> Savings</p>
+        <p><strong>Account Status:</strong> Active</p>
+        <p><strong>Branch-Info:</strong> Anakapalli</p>
+    </div>
+
+    <!-- Payment History -->
+    <div class="payment-history">
+        <h2>Payment History</h2>
+        <ul>
+            <li><strong>Transaction 1:</strong> Payment of ₹500 to Navya on 2025-02-10</li>
+            <li><strong>Transaction 2:</strong> Payment of ₹200 to Kavya on 2025-02-05</li>
+            <li><strong>Transaction 3:</strong> Payment of ₹100 to Manasa on 2025-02-01</li>
+            <li><strong>Transaction 4:</strong> Payment of ₹1000 to Nikitha on 2025-02-01</li>
+            <li><strong>Transaction 5:</strong> Payment of ₹2000 to Indu on 2025-02-01</li>
+        </ul>
+    </div>
+
+    <!-- Other Features -->
+    <div class="other-features">
+        <h2>Other Features</h2>
+        <div class="section">
+            <div class="card">
+                <h3>Change Password</h3>
+                <p>Secure your account by changing your password regularly.</p>
+                <a href="#" class="btn">Change Password</a>
+            </div>
+            <div class="card">
+                <h3>View Account Statements</h3>
+                <p>Download or view your account's transaction history.</p>
+                <a href="#" class="btn">View Statements</a>
+            </div>
+        </div>
+        <div class="section">
+            <div class="card">
+                <h3>Manage Security Settings</h3>
+                <p>Update your security preferences and enable two-factor authentication.</p>
+                <a href="#" class="btn">Manage Security</a>
+            </div>
+            <div class="card">
+                <h3>Recent Activity</h3>
+                <p>Check the latest actions on your account.</p>
+                <a href="#" class="btn">View Activity</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <a href="#" class="btn">Log Out</a>
+    </div>
+</div>
+
+</body>
+</html>

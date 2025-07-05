@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Loan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            overflow: auto;
+        }
+        .loan-container {
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 900px;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .loan-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        select, input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .back-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="loan-container">
+    <h1>Apply for a Loan</h1>
+    <form class="loan-form">
+        <div class="form-group">
+            <label for="loan-type">Loan Type</label>
+            <select id="loan-type">
+                <option value="personal">Personal Loan</option>
+                <option value="home">Home Loan</option>
+                <option value="auto">Auto Loan</option>
+                <option value="business">Business Loan</option>
+                <option value="education">Education Loan</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="loan-amount">Loan Amount ($)</label>
+            <input type="number" id="loan-amount" placeholder="Enter loan amount">
+        </div>
+        <div class="form-group">
+            <label for="loan-tenure">Loan Tenure</label>
+            <select id="loan-tenure">
+                <option value="1">1 Year</option>
+                <option value="3">3 Years</option>
+                <option value="5">5 Years</option>
+                <option value="10">10 Years</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="income">Annual Income ($)</label>
+            <input type="number" id="income" placeholder="Enter annual income">
+        </div>
+        <div class="form-group">
+            <label for="credit-score">Credit Score</label>
+            <select id="credit-score">
+                <option value="excellent">Excellent (750+)</option>
+                <option value="good">Good (650-749)</option>
+                <option value="fair">Fair (550-649)</option>
+                <option value="poor">Poor (Below 550)</option>
+            </select>
+        </div>
+        <button type="submit">Submit Application</button>
+    </form>
+    <div class="back-link">
+        <p><a href="persbank.html">Back to Dashboard</a></p>
+    </div>
+</div>
+
+</body>
+</html>

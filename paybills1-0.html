@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Bills</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .bills-container {
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 900px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .bills-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .summary {
+            display: none;
+            background-color: #f1f5f9;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .download-btn {
+            display: none;
+            margin-top: 15px;
+            background-color: #28a745;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .back-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bills-container">
+    <h1>Pay Bills</h1>
+    <form class="bills-form" id="billsForm">
+        <div class="form-group">
+            <label for="bill-category">Bill Category</label>
+            <select id="bill-category" onchange="updateProviders()">
+                <option value="">Select Category</option>
+                <option value="electricity">Electricity</option>
+                <option value="water">Water</option>
+                <option value="internet">Internet</option>
+                <option value="phone">Phone</option>
+                <option value="gas">Gas</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="bill-provider">Bill Provider</label>
+            <select id="bill-provider">
+                <option value="">Select Provider</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="consumer-number">Consumer/Account Number</label>
+            <input type="text" id="consumer-number" placeholder="Enter your consumer number" required>
+        </div>
+        <div class="form-group">
+            <label for="amount">Billing Amount ($)</label>
+            <input type="number" id="amount" placeholder="Enter amount" required>
+        </div>
+        <div class="form-group">
+            <label for="payment-mode">Payment Mode</label>
+            <select id="payment-mode">
+                <option value="credit-card">Credit Card</option>
+                <option value="debit-card">Debit Card</option>
+                <option value="upi">UPI</option>
+                <option value="net-banking">Net Banking</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>
+                <input type="checkbox" id="auto-pay"> Enable Auto-Pay for Future Bills
+            </label>
+        </div>
+        <button type="button" onclick="showSummary()">Proceed</button>
+    </form>
+
+    <!-- Bill Payment Summary & OTP -->
+    <div class="summary" id="summary">
+        <h2>Bill Payment Summary</h2>
+        <p><strong>Category:</strong> <span id="summary-category"></span></p>
+        <p><strong>Provider:</strong> <span id="summary-provider"></span></p>
+        <p><strong>Account Number:</strong> <span id="summary-account"></span></p>
+        <p><strong>Amount:</strong> $<span id="summary-amount"></span></p>
+        <p><strong>Payment Mode:</strong> <span id="summary-mode"></span></p>
+
+        <div class="form-group">
+            <label for="otp">Enter OTP</label>
+            <input type="number" id="otp" placeholder="Enter OTP" required>
+        </div>
+        <button onclick="confirmPayment()">Confirm Payment</button>
+
+        <!-- Download Button (Initially Hidden) -->
+        <button class="download-btn" id="downloadBtn" onclick="downloadBill()">Download Receipt</button>
+    </div>
+
+    <div class="back-link">
+        <p><a href="persbank.html">Back to Dashboard</a></p>
+    </div>
+</div>
+
+<script>
+    function updateProviders() {
+        const category = document.getElementById("bill-category").value;
+        const providerDropdown = document.getElementById("bill-provider");
+        providerDropdown.innerHTML = `<option value="">Select Provider</option>`;
+
+        const providers = {
+            electricity: ["ABC Power", "XYZ Electric"],
+            water: ["City Water", "Aqua Corp"],
+            internet: ["NetSpeed", "FiberMax"],
+            phone: ["GlobalTel", "FastConnect"],
+            gas: ["GreenGas", "EcoFuel"]
+        };
+
+        if (category) {
+            providers[category].forEach(provider => {
+                let option = document.createElement("option");
+                option.text = provider;
+                providerDropdown.add(option);
+            });
+        }
+    }
+
+    function showSummary() {
+        document.getElementById("summary-category").innerText = document.getElementById("bill-category").value;
+        document.getElementById("summary-provider").innerText = document.getElementById("bill-provider").value;
+        document.getElementById("summary-account").innerText = document.getElementById("consumer-number").value;
+        document.getElementById("summary-amount").innerText = document.getElementById("amount").value;
+        document.getElementById("summary-mode").innerText = document.getElementById("payment-mode").value;
+
+        document.getElementById("summary").style.display = "block";
+    }
+
+    function confirmPayment() {
+        alert("Bill Paid Successfully!");
+        document.getElementById("downloadBtn").style.display = "block"; // Show Download Button
+    }
+
+    function downloadBill() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.text("Bill Payment Receipt", 20, 20);
+        doc.text(`Category: ${document.getElementById("summary-category").innerText}`,20, 30);
+        doc.text(`Provider: ${document.getElementById("summary-provider").innerText}`,20, 40);
+        doc.text(`Account: ${document.getElementById("summary-account").innerText}`,20, 50);
+        doc.text(`Amount Paid: $${document.getElementById("summary-amount").innerText}`, 20, 60);
+        doc.text(`Mode: ${document.getElementById("summary-mode").innerText}`,20, 70);
+        doc.save("Bill_Receipt.pdf");
+    }
+</script>
+
+</body>
+</html>
